@@ -13,23 +13,24 @@ function solution(today, terms, privacies) {
     // privacies 에서 today를 뺀 값이 음수면 파기해야된다. terms에 정보가 있음
     // terms 객체를 만들어줌
     let info = {}
-    for (term of terms){
-        let data = term.split(' ')
-        let type = data[0]
-        let period = data[1]
+    for (const term of terms){
+        const data = term.split(' ')
+        const type = data[0]
+        const period = data[1]
         info[type] = period
     }
+
     let answer = []
     let i = 1
-    for (privacy of privacies){
-        let data = privacy.split(' ')
-        let date = data[0]
-        let type = data[1]
+    for (const privacy of privacies){
+        const data = privacy.split(' ')
+        const date = data[0]
+        const type = data[1]
         
         // date + type 이 today 보다 작으면 파기
-        let originalDate = dateToNumber(today)
-        let privacyDate = dateToNumber(date)
-        let expireDate = privacyDate + Number(info[type])*30
+        const originalDate = dateToNumber(today)
+        const privacyDate = dateToNumber(date)
+        const expireDate = privacyDate + Number(info[type])*30
         if (expireDate <= originalDate){
             answer.push(i)
         }
